@@ -27,7 +27,7 @@ function Login(props) {
             <TextInput placeholder="Contraseña" onChangeText={(text) => setContraseña(text)} value={contraseña} />
             {error ? <Text>{error}</Text> : null}
             <Pressable onPress={() => onSubmit()}>
-                <Text>Login</Text>
+                <Text>Iniciar sesión</Text>
             </Pressable>
             <Pressable onPress={() => navegar()}>
                 <Text>Ir a Register</Text>

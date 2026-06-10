@@ -45,7 +45,7 @@ function Register(props) {
             <TextInput placeholder="Contraseña" onChangeText={(text) => setContraseña(text)} value={contraseña} />
             {error ? <Text>{error}</Text> : null}
             <Pressable onPress={() => onSubmit()}>
-                <Text>Registrarse</Text>
+                <Text>Registrarme</Text>
             </Pressable>
             <Pressable onPress={() => navegar()}>
                 <Text>Ir a Login</Text>
