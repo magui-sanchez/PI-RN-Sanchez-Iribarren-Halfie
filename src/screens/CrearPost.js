@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { View, Text, Pressable, TextInput, Image, ActivityIndicator } from "react-native";
-import {auth, db} from '../firebase';
-import * as ImagePicker from 'expo-image-picker';
+
+
+import { auth, db } from "../config/firebase";
 
 
 function CrearPost(props) {
@@ -10,36 +11,7 @@ function CrearPost(props) {
     const[loading, setLoading] = useState(false);
     const[error, setError] = useState('');
 
-    const seleccionDesdeGaleria = async () => {
-        const {status} = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if(status !== 'granted'){
-            alert('Se necesitan permisos para acceder a la galeria');
-            return;
-        }
-        const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
-            quality: 1,
-        });
-        if(!result.cancelled){
-            setImagen(result.assets[0].uri);
-        }
-    };
-
-    const tomarFoto = async () => {
-        const {status} = await ImagePicker.requestCameraPermissionsAsync();
-        if(status !== 'granted'){
-            alert('Se necesitan permisos para acceder a la camara');
-            return;
-        }
-        const result = await ImagePicker.launchCameraAsync({
-            allowsEditing: true,
-            quality: 1,
-        });
-        if(!result.cancelled){
-            setImagen(result.assets[0].uri);
-        }
-    };
+   
 
     const subirPost = async () => {
         if(!descripcion.trim() || !imagen){

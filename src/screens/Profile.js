@@ -1,6 +1,6 @@
 import React from "react";
 import {useState, useEffect} from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { auth } from "../config/firebase";
 import { FlatList } from "react-native-web";
 
