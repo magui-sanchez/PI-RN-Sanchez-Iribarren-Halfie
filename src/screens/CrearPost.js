@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { View, Text, Pressable, TextInput, Image, ActivityIndicator } from "react-native";
-
-
+import Camara from '../components/Camara';
 import { auth, db } from "../config/firebase";
-
 
 function CrearPost(props) {
     const[descripcion, setDescripcion] = useState("");
