@@ -51,21 +51,19 @@ function CrearPost(props) {
                 onChangeText = {(text) => setDescripcion(text)}
                 multiline
             />
-            <Pressable onPress={seleccionDesdeGaleria}>
-                <Text>Seleccionar desde galeria</Text>
-            </Pressable>
-            <Pressable onPress={tomarFoto}>
-                <Text>Tomar foto</Text>
-            </Pressable>
+
+            <Camara setImagen={setImagen}/>
 
             {imagen && <Image source={{uri: imagen}} style={{width: 200, height: 200}} />}
             {error ? <Text>{error}</Text> : null}
 
-            {loading ? <ActivityIndicator/> : <Pressable onPress={subirPost}>
+            {loading ? 
+            <ActivityIndicator/> : 
+            <Pressable onPress={subirPost}>
                 <Text>Publicar</Text>
             </Pressable>
             }
         </View>
-    )
+    );
 }
 export default CrearPost;
