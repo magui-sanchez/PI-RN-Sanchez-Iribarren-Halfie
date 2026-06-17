@@ -1,12 +1,12 @@
 import React from "react";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { View, Text, Pressable, StyleSheet, ActivityIndicator } from "react-native";
-import { auth,db } from "../config/firebase";
+import { auth, db } from "../config/firebase";
 import { FlatList } from "react-native-web";
 
 function Profile(props) {
     const [myPosts, setMyPosts] = useState([]);
-    const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const user = auth.currentUser;
@@ -18,7 +18,8 @@ function Profile(props) {
                     id: docs.id,
                     data: docs.data(),
                 });
-            });
+            })
+                setLoading(false)
     }, []);
 
     const logout = () => {
@@ -33,7 +34,7 @@ function Profile(props) {
                 <Text style={styles.value}>
                     {auth.currentUser.displayName
                         ? auth.currentUser.displayName
-                        : "Sin nombre de usuario"}
+                        : auth.currentUser.email}
                 </Text>
 
                 <Text style={styles.label}>Email</Text>
@@ -78,72 +79,72 @@ export default Profile
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: "#f5f5f5",
-      padding: 20,
+        flex: 1,
+        backgroundColor: "#f5f5f5",
+        padding: 20,
     },
     userCard: {
-      backgroundColor: "#fff",
-      borderRadius: 10,
-      padding: 16,
-      marginBottom: 24,
-      borderWidth: 0.5,
-      borderColor: "#ddd",
+        backgroundColor: "#fff",
+        borderRadius: 10,
+        padding: 16,
+        marginBottom: 24,
+        borderWidth: 0.5,
+        borderColor: "#ddd",
     },
     label: {
-      fontSize: 12,
-      color: "#888",
-      marginTop: 8,
-      textTransform: "uppercase",
+        fontSize: 12,
+        color: "#888",
+        marginTop: 8,
+        textTransform: "uppercase",
     },
     value: {
-      fontSize: 16,
-      color: "#333",
-      marginTop: 2,
+        fontSize: 16,
+        color: "#333",
+        marginTop: 2,
     },
     sectionTitle: {
-      fontSize: 18,
-      fontWeight: "500",
-      color: "#333",
-      marginBottom: 12,
+        fontSize: 18,
+        fontWeight: "500",
+        color: "#333",
+        marginBottom: 12,
     },
     listContainer: {
-      flex: 1,
-      width: "100%",
+        flex: 1,
+        width: "100%",
     },
     postCard: {
-      backgroundColor: "#fff",
-      borderRadius: 8,
-      padding: 14,
-      marginBottom: 10,
-      borderWidth: 0.5,
-      borderColor: "#ddd",
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        padding: 14,
+        marginBottom: 10,
+        borderWidth: 0.5,
+        borderColor: "#ddd",
     },
     postDescription: {
-      fontSize: 15,
-      color: "#333",
+        fontSize: 15,
+        color: "#333",
     },
     postDate: {
-      fontSize: 12,
-      color: "#aaa",
-      marginTop: 6,
+        fontSize: 12,
+        color: "#aaa",
+        marginTop: 6,
     },
     emptyText: {
-      fontSize: 14,
-      color: "#aaa",
-      textAlign: "center",
-      marginTop: 20,
+        fontSize: 14,
+        color: "#aaa",
+        textAlign: "center",
+        marginTop: 20,
     },
     logoutBtn: {
-      backgroundColor: "#6200ea",
-      borderRadius: 8,
-      padding: 14,
-      alignItems: "center",
-      marginTop: 16,
+        backgroundColor: "#6200ea",
+        borderRadius: 8,
+        padding: 14,
+        alignItems: "center",
+        marginTop: 16,
     },
     logoutText: {
-      color: "#fff",
-      fontSize: 16,
-      fontWeight: "500",
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "500",
     },
-  });
+});

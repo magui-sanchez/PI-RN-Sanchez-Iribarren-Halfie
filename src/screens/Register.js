@@ -24,6 +24,9 @@ function Register(props) {
     function onSubmit() {
         auth.createUserWithEmailAndPassword(email, contraseña)
             .then(() => {
+                auth.currentUser.updateProfile({
+                    displayName: nombreUsuario,
+                });
                 db.collection("users").add({
                     email: email,
                     nombreUsuario: nombreUsuario,
