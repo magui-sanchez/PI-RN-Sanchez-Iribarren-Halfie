@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Pressable, TextInput } from "react-native";
+import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
 import { auth, db } from "../config/firebase";
 
 function Register(props) {

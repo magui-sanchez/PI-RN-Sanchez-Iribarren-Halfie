@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, Pressable, TextInput, Image, ActivityIndicator } from "react-native";
+import { View, Text, Pressable, TextInput, Image, ActivityIndicator, StyleSheet } from "react-native";
 import Camara from '../components/Camara';
 import { auth, db } from "../config/firebase";
 

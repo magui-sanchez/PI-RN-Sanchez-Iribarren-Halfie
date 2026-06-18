@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db } from "../config/firebase";
-import { FlatList, Text, TextInput, View } from "react-native-web";
+import { FlatList, Text, TextInput, View, StyleSheet } from "react-native-web";
 import { Pressable } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
