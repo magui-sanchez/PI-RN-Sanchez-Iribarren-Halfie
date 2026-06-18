@@ -42,10 +42,11 @@ function CrearPost(props) {
     };
 
     return (
-        <View>
-            <Text>Crear Post</Text>
+        <View style={styles.container}>
+            <Text style={styles.create}>Crear Post</Text>
 
             <TextInput
+                style={styles.textInput}
                 placeholder="Descripcion"
                 value={descripcion}
                 onChangeText = {(text) => setDescripcion(text)}
@@ -55,15 +56,51 @@ function CrearPost(props) {
             <Camara setImagen={setImagen}/>
 
             {imagen && <Image source={{uri: imagen}} style={{width: 200, height: 200}} />}
-            {error ? <Text>{error}</Text> : null}
+            {error ? <Text style={styles.error}>{error}</Text> : null}
 
             {loading ? 
             <ActivityIndicator/> : 
-            <Pressable onPress={subirPost}>
-                <Text>Publicar</Text>
+            <Pressable style={styles.button} onPress={subirPost}>
+                <Text style={styles.publicate}>Publicar</Text>
             </Pressable>
             }
         </View>
     );
 }
 export default CrearPost;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+    },
+    create: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    textInput: {
+        width: '100%',
+        height: 100,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom: 20,
+        padding: 10,
+        textAlignVertical: 'top',
+    },
+    error: {
+        color: 'red',
+        marginBottom: 20,
+    },
+    button: {
+        backgroundColor: '#8C7A6B',
+        padding: 10,
+        borderRadius: 5,
+    },
+    publicate: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
+});

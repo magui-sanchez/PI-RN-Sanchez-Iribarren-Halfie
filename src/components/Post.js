@@ -39,19 +39,51 @@ function Post(props) {
     }
 
     return (
-        <View>
-            <Text>{post.email}</Text>
+        <View style={styles.container}>
+            <Text style={styles.usuario}>{post.email}</Text>
             <Image
             source={{uri:post.imagen}}
             style={{width: 200, height: 200}}
             />
-            <Text>{post.descripcion}</Text>
-            <Pressable onPress={like ? quitarLike : darLike}>
-                <Text>Me gusta</Text>
+            <Text style={styles.description}>{post.descripcion}</Text>
+            <Pressable style={styles.button} onPress={like ? quitarLike : darLike}>
+                <Text style={styles.like}>Me gusta</Text>
             </Pressable>
-            <Text>Likes: {post.likes.length}</Text>
+            <Text style={styles.cantidadLikes}>Likes: {post.likes.length}</Text>
         </View>
     );
 }
 
 export default Post;
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#FAF9F7',
+        padding: 10,
+        marginBottom: 10,
+        borderRadius: 5,
+    },
+    usuario: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginBottom: 5,
+    },
+    description: {
+        fontSize: 14,
+        marginBottom: 5,
+    },
+    button: {
+        backgroundColor: '#8C7A6B',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        marginBottom: 5,
+    },
+    like: {
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+    cantidadLikes: {
+        fontSize: 14,
+    }
+});

@@ -38,16 +38,37 @@ function Camara(props) {
                 facing={tipo}
                 />
             
-            <Pressable
+            <Pressable style={styles.button}
                 onPress={() => setTipo(tipo === "back" ? "front" : "back")}>
-                <Text> Cambiar camara</Text>
+                <Text style={styles.camara}> Cambiar camara</Text>
             </Pressable>
-            <Pressable
+            <Pressable style={styles.button}
                 onPress={sacarFoto}>
-                <Text> Tomar foto</Text>
+                <Text style={styles.camara} > Tomar foto</Text>
             </Pressable>
         </View>
     );
 }
 
 export default Camara;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#FAF9F7',
+        paddingHorizontal: 18,
+        paddingTop: 10
+    },
+    camara: {
+        width: '100%',
+        height: 300,
+        marginBottom: 10
+    },
+    button: {
+        backgroundColor: '#8C7A6B',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        marginBottom: 10
+    }
+});
