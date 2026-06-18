@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
     },
     register: {
         fontSize: 26,
-        fontWeight: '800',
-        color: '#8C7A6B',
+        fontWeight: '300',
+        color: 'black',
         textAlign: 'center',
-        marginTop: 10,
+        marginTop: 10
     },
     textInput: {
         borderWidth: 1,
@@ -97,5 +97,6 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 5,
         marginBottom: 10,
+        textAlign: 'center'
     }
 });
