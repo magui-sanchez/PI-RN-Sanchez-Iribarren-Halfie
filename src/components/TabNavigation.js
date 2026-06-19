@@ -3,7 +3,7 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import CrearPost from "../screens/CrearPost";
 import { StyleSheet } from "react-native";
-import MenuHome from "./MenuHome";
+import MenuHome from "./HomeMenu";
 
 
 let Tab = createBottomTabNavigator();
