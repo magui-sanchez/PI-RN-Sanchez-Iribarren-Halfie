@@ -13,7 +13,7 @@ function Login(props) {
                 props.navigation.navigate("TabNavigation")
             })
             .catch((error) => {
-                setError(error.message);
+                setError("Error al iniciar sesión");
                 console.log(error);
             })
     }

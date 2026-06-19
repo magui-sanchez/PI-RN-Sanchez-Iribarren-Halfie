@@ -1,10 +1,13 @@
-import firebase from '../config/firebase';
+import firebase from "firebase";
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { auth, db } from "../config/firebase";
+
 
 function Post(props) {
     const [like, setLike] = useState(false);
-    const post = props.postData;
+    const post = props.postData.data;
+    const postId = props.postData.id;
 
     useEffect(()=> {
         if (post.likes.includes(auth.currentUser.email)) {
@@ -14,9 +17,9 @@ function Post(props) {
 
     const darLike = () => {
         db.collection('posts')
-        .doc(post.id)
+        .doc(postId)
         .update({
-            like: firebase.firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
+            likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
         })
         .then(() => setLike(true))
         .catch((error) => {console.error(error);
@@ -25,9 +28,9 @@ function Post(props) {
 
     const quitarLike = () => {
         db.collection('posts')
-        .doc(post.id)
+        .doc(postId)
         .update({
-            like: firebase.firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+            likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
         })
         .then(() => setLike(false))
         .catch((error) => {console.error('Error al quitar like: ', error);
@@ -47,9 +50,9 @@ function Post(props) {
             />
             <Text style={styles.description}>{post.descripcion}</Text>
             <Pressable style={styles.button} onPress={like ? quitarLike : darLike}>
-                <Text style={styles.like}>Me gusta</Text>
+                <Text style={styles.like}>{like ? 'Quitar like' : 'Me gusta'}</Text>
             </Pressable>
-            <Text style={styles.cantidadLikes}>Likes: {post.likes.length}</Text>
+            <Text style={styles.cantidadLikes}>Likes: {post.likes ? post.likes.length : 0}</Text>
         </View>
     );
 }

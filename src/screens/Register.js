@@ -22,6 +22,10 @@ function Register(props) {
     }
 
     function onSubmit() {
+        if (nombreUsuario == "") {
+            setError("Por favor, ingrese un nombre de usuario");
+            return;
+        }
         auth.createUserWithEmailAndPassword(email, contraseña)
             .then(() => {
                 auth.currentUser.updateProfile({

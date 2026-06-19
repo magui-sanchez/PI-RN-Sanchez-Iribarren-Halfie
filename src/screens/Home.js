@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { db } from "../config/firebase";
 import { ActivityIndicator, FlatList} from "react-native-web";
-import CrearPost from "./CrearPost";
+import Post from "../components/Post";
+
 
 function Home(props) {
     const [posts, setPosts] = useState([]);
@@ -36,7 +37,7 @@ function Home(props) {
                     data= {posts}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
-                        <CrearPost postData={item} navegacion={props.navigation} />
+                        <Post postData={item}/>
                     )}
                 />
             )}
