@@ -3,19 +3,21 @@ import { db } from "../config/firebase";
 import { FlatList, Text, TextInput, View, StyleSheet } from "react-native-web";
 import { Pressable } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import firebase from 'firebase';
+import { auth } from "../config/firebase";
 
 function Comentario(props) {
     const [comentario, setComentario] = useState("");
-    const [listaComentarios, setListaComentarios] = useState(props.rout.params.data.data.comentarios);
+    const [listaComentarios, setListaComentarios] = useState(props.rout.params.data.comentarios || []);
     function comentar() {
         const info = {
             texto: comentario,
             user: auth.currentUser,email
         };
         db.collection('posts')
-            .doc(props.route.params.data.id)
+            .doc(props.route.params.postId)
             .update({
-                comentarios: firebase.firebase.FieldValue.arrayUnion(info)
+                comentarios: firebase.firestore.FieldValue.arrayUnion(info)
             })
             .then(() => {
                 const nuevaLista = [...listaComentarios, info];
@@ -27,15 +29,15 @@ function Comentario(props) {
             });
     }
 
-    const data = props.rout.params.data;
+    const data = props.route.params.data;
 
     return(
         <View style={styles.card}>
-            <Text style={styles.owner}> {data.data.email} </Text>
-            <Text style={styles.description}> Posteo: {data.data.texto} </Text>
+            <Text style={styles.owner}> {data.email} </Text>
+            <Text style={styles.description}> Posteo: {data.texto} </Text>
 
             <View style={styles.footer}> 
-                <Text style={styles.likeCount}> Cantidad de likes: {data.data.likes.length} </Text>
+                <Text style={styles.likeCount}> Cantidad de likes: {data.likes.length} </Text>
             </View>
             
             {listaComentarios.length === 0 ? ( <Text style={styles.noComments}> No hay ningún comentario </Text>) : ( 
