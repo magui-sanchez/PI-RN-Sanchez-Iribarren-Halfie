@@ -3,13 +3,14 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import CrearPost from "../screens/CrearPost";
 import { StyleSheet } from "react-native";
+import MenuHome from "./MenuHome";
 
 
 let Tab = createBottomTabNavigator();
 function TabNavigation() {
     return (
         <Tab.Navigator style={styles.container}>
-            <Tab.Screen style={styles.home} name="Home" component={Home} options={{}}/>
+            <Tab.Screen style={styles.home} name="Menu Home" component={MenuHome} options={{}}/>
             <Tab.Screen style={styles.crearPost} name="Crear Post" component={CrearPost} options={{}}/>
             <Tab.Screen style={styles.profile} name="Profile" component={Profile} options={{}}/>
         </Tab.Navigator>

@@ -37,11 +37,7 @@ function Camara(props) {
                 style={styles.camara}
                 facing={tipo}
                 />
-            
-            <Pressable style={styles.button}
-                onPress={() => setTipo(tipo === "back" ? "front" : "back")}>
-                <Text style={styles.camara}> Cambiar camara</Text>
-            </Pressable>
+        
             <Pressable style={styles.button}
                 onPress={sacarFoto}>
                 <Text style={styles.camara} > Tomar foto</Text>

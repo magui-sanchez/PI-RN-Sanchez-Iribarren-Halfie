@@ -38,7 +38,7 @@ function Post(props) {
     };
 
     const comentar = () => {
-        // hacercomentario del posteo
+        props.navegacion.navigate('Comentarios', {postId: postId, data: post});
     }
 
     return (
@@ -53,6 +53,10 @@ function Post(props) {
                 <Text style={styles.like}>{like ? 'Quitar like' : 'Me gusta'}</Text>
             </Pressable>
             <Text style={styles.cantidadLikes}>Likes: {post.likes ? post.likes.length : 0}</Text>
+            <Pressable style={styles.button} onPress={comentar}>
+                <Text style={styles.like}>Comentar</Text>
+            </Pressable>
+           
         </View>
     );
 }
