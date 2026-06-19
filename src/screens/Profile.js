@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 12,
-        color: "#888",
+        color: "E9D8C8",
         marginTop: 8,
         textTransform: "uppercase",
     },
