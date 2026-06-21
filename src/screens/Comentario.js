@@ -8,7 +8,7 @@ import { auth } from "../config/firebase";
 
 function Comentario(props) {
     const [comentario, setComentario] = useState("");
-    const [listaComentarios, setListaComentarios] = useState(props.rout.params.data.comentarios || []);
+    const [listaComentarios, setListaComentarios] = useState(props.route.params.data.comentarios || []);
     function comentar() {
         const info = {
             texto: comentario,
