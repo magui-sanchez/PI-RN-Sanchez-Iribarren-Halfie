@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { db } from "../config/firebase";
 import { FlatList, Text, TextInput, View, StyleSheet } from "react-native-web";
 import { Pressable } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import firebase from 'firebase';
-import { auth } from "../config/firebase";
+import { auth, db } from "../config/firebase";
 
 function Comentario(props) {
     const [comentario, setComentario] = useState("");
@@ -12,7 +11,7 @@ function Comentario(props) {
     function comentar() {
         const info = {
             texto: comentario,
-            user: auth.currentUser,email
+            user: auth.currentUser.email
         };
         db.collection('posts')
             .doc(props.route.params.postId)
